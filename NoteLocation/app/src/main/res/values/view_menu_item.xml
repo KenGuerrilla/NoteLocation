@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="list_view_long_press_menu">
+
+        <item>Edit</item>
+        <item>Turn Off</item>
+        <item>Delete</item>
+
+    </string-array>
+
+    
+</resources>

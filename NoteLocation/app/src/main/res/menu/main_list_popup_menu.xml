@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item   android:id="@+id/popup_edit"
+            android:title="@string/main_list_popup_edit"
+     />
+
+    <item   android:id="@+id/popup_turn_off"
+            android:title="@string/main_list_popup_off"
+    />
+
+    <item   android:id="@+id/popup_delete"
+        android:title="@string/main_list_popup_delete"
+    />
+
+
+</menu>

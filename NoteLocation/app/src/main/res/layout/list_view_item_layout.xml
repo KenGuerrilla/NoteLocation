@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/note_list_main_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/list_margin_main_title"
+            android:text="@string/test_string"
+            android:textSize="@dimen/list_main_title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/list_margin_subtitle_size"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/note_list_sub_title_date"
+                android:layout_width="@dimen/list_view_size_zero"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/list_margin_subtitle_left_size"
+                android:layout_weight="3"
+                android:text="@string/test_string_date"
+                android:textSize="@dimen/list_subtitle" />
+
+            <TextView
+                android:id="@+id/note_list_sub_title_place"
+                android:layout_width="@dimen/list_view_size_zero"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:text="@string/test_string_place"
+                android:textSize="@dimen/list_subtitle" />
+
+            <TextView
+                android:id="@+id/note_list_sub_title_ac"
+                android:layout_width="@dimen/list_view_size_zero"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/test_string_ac"
+                android:textSize="@dimen/list_subtitle" />
+
+            <TextView
+                android:id="@+id/note_list_sub_title_location"
+                android:layout_width="@dimen/list_view_size_zero"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/test_string_loaction"
+                android:textSize="@dimen/list_subtitle" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

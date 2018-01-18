@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NoteLocation</string>
+    <string name="action_settings">設定</string>
+    <string name="str_note_title">標題</string>
+    <string name="str_note_time">時間</string>
+    <string name="str_note_place">地點</string>
+    <string name="str_note_AC_GPS">功能</string>
+    <string name="str_note_title_hint">輸入標題</string>
+    <string name="str_note_time_hint">選擇時間</string>
+    <string name="str_note_place_hint">輸入地點描述</string>
+    <string name="str_note_keying_hint">輸入備忘內容</string>
+    <string name="str_text_time_null">尚未設定時間</string>
+    <string name="str_text_location_null">尚未設定GPS</string>
+    <string name="test_string">測試測試測試！！</string>
+    <string name="test_string_date">2017/12/22</string>
+    <string name="test_string_place">台灣台南</string>
+    <string name="test_string_ac">_V_</string>
+    <string name="test_string_loaction">_X_</string>
+    <string name="menu_done">完成</string>
+
+
+    <!-- MainList popup menu -->
+
+    <string name="main_list_popup_edit">編輯</string>
+    <string name="main_list_popup_off">關閉</string>
+    <string name="main_list_popup_delete">刪除</string>
+
+</resources>

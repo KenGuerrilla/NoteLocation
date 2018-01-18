@@ -1,0 +1,27 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- list title string size -->
+    <dimen name="list_main_title">24sp</dimen>
+    <dimen name="list_subtitle">16sp</dimen>
+
+
+    <dimen name="edit_text">18sp</dimen>
+    <dimen name="title_size">18sp</dimen>
+    <dimen name="title_size2">16sp</dimen>
+
+    <!-- list title margin -->
+    <dimen name="list_margin_main_title">6sp</dimen>
+    <dimen name="list_margin_subtitle_size">6sp</dimen>
+    <dimen name="list_margin_subtitle_left_size">16sp</dimen>
+
+    <dimen name="note_edit_title_margin_size">8sp</dimen>
+
+    <!-- Note edit text size -->
+
+    <dimen name="note_edit_location_text_size">20sp</dimen>
+
+
+    <!-- list subtitle weight  -->
+    <dimen name="list_view_size_zero">0sp</dimen>
+</resources>

@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">NoteLocation</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="str_note_title">Title</string>
+    <string name="str_note_time">Time</string>
+    <string name="str_note_place">Place</string>
+    <string name="str_note_AC_GPS">Function</string>
+
+
+    <string name="str_note_title_hint">Keying title</string>
+    <string name="str_note_time_hint">Select Time</string>
+    <string name="str_note_place_hint">Keying Place ( Optional )</string>
+    <string name="str_note_keying_hint">Keying Your Note</string>
+
+    <string name="str_text_time_null">Setting time not yet</string>
+    <string name="str_text_location_null">Setting GPS not yet</string>
+
+
+    <string name="test_string">TestString!!!!!!!!!</string>
+    <string name="test_string_date">2017/12/22</string>
+    <string name="test_string_place">Taiwan Tainan</string>
+    <string name="test_string_ac">_V_</string>
+    <string name="test_string_loaction">_X_</string>
+    <string name="null_string" translatable="false"></string>
+
+
+    <!-- menu -->
+
+    <string name="menu_done">Done</string>
+
+
+    <!-- MainList popup menu -->
+
+    <string name="main_list_popup_edit">Edit</string>
+    <string name="main_list_popup_off">TurnOff</string>
+    <string name="main_list_popup_delete">Delete</string>
+
+
+
+</resources>
