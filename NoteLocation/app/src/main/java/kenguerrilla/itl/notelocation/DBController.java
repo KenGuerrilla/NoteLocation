@@ -1,9 +1,11 @@
 package kenguerrilla.itl.notelocation;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -35,8 +37,6 @@ import java.util.ArrayList;
     private MyDBHelper dbHelper;
     private Cursor cursor;
 
-    private ArrayList<Note> noteArray = new ArrayList<>();
-
 
     DBController(Context context){
 
@@ -55,7 +55,7 @@ import java.util.ArrayList;
         return cursor;
     }
 
-    void deleteNoteItem(String tableName, String id){
+    public void deleteNoteById(String tableName, String id){
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.delete(tableName,"_id =" + id,null);
@@ -63,34 +63,31 @@ import java.util.ArrayList;
 
     }
 
+    public long addNote(String title, String place, String date, String note, int gpsSetUp){
 
-    ArrayList<Note> getNoteArray(){
 
-        noteArray.clear(); // 確保更新資料前 noteArray 為空，避免混入舊資料。
+        ContentValues cValue = new ContentValues();
 
-        cursor = getNoteItemCursor();
-        cursor.moveToFirst();
 
-        do{
-            noteArray.add(
-                    new Note(   cursor.getString(0),
-                            cursor.getString(1),
-                            cursor.getString(2),
-                            cursor.getString(3),
-                            cursor.getString(4),
-                            cursor.getString(5),
-                            cursor.getString(6),
-                            cursor.getString(7),
-                            cursor.getInt(8),
-                            cursor.getInt(9)
-                    )
+        cValue.put("title",title);
+        cValue.put("place",place);
+        cValue.put("date", date);
+        cValue.put("note",note);
+        cValue.put("gpsCheck",gpsSetUp);
 
-            );
+        long id = dbHelper.getWritableDatabase().insert("noteItem",null,cValue);
 
-        } while (cursor.moveToNext());
+        Log.d("Add Value, id: ",id+" ");
 
-        Log.d(KG_LOG_TITLE,"Array have " + noteArray.size() +" Item");
-        return noteArray;
+        if (id > 0){
+            Log.d(KG_LOG_TITLE,"ID 為 " + id +"新增成功");
+        }else{
+            Log.d(KG_LOG_TITLE,"新增失敗");
+        }
+
+        return id;
+
     }
+
 
 }

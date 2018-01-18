@@ -23,30 +23,33 @@ public class NoteListAdapter extends BaseAdapter {
 
     private static final String KG_LOG_TITLE = "KG ------ ";
 
-    private ArrayList<Note> noteArray = new ArrayList<Note>();
-
     private LayoutInflater adapterLayoutInflater;
+
+    private NoteBook noteBook;
 
     NoteListAdapter(Context context){
         adapterLayoutInflater = LayoutInflater.from(context);
-        DBController dbController = new DBController(context);
-        noteArray = dbController.getNoteArray();
+        noteBook = NoteBook.getInstance(context);
+        //noteArray = dbController.getNoteArray();
     }
 
-
+/*
     void setNoteArray(ArrayList<Note> noteArray) {
         this.noteArray = noteArray;
         Log.d(KG_LOG_TITLE,"Reset Note Array");
     }
+*/
+
+
 
     @Override
     public int getCount() {
-        return noteArray.size();
+        return noteBook.getNoteBookSize();
     }
 
     @Override
-    public Note getItem(int i) {
-        return noteArray.get(i);
+    public NoteBook.Note getItem(int i) {
+        return noteBook.getNoteBookItem(i);
     }
 
     @Override
@@ -71,9 +74,9 @@ public class NoteListAdapter extends BaseAdapter {
                     (TextView) myView.findViewById(R.id.note_list_sub_title_ac)
             );
 
-            tag.listMainTitle.setText(noteArray.get(i).getTitle());
-            tag.listSubTitleDate.setText(noteArray.get(i).getDate());
-            tag.listSubTitlePlace.setText(noteArray.get(i).getPlace());
+            tag.listMainTitle.setText(noteBook.getNoteBookItem(i).getTitle());
+            tag.listSubTitleDate.setText(noteBook.getNoteBookItem(i).getDate());
+            tag.listSubTitlePlace.setText(noteBook.getNoteBookItem(i).getPlace());
             tag.listSubTitleLocation.setText(GPS_DATA_NOT_YET);
             tag.listSubTitleAc.setText(AC_DATA_NOT_YET);
 

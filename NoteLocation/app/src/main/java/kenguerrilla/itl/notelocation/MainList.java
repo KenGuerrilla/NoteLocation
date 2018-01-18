@@ -3,7 +3,6 @@ package kenguerrilla.itl.notelocation;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,50 +16,42 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 
 public class MainList extends AppCompatActivity {
 
     public static final String KG_LOG_TITLE = "KG ------ ";
-    private static final String NOTE_TABLE_NAME = "noteItem";
-
-    NoteListAdapter nlAdapter = null;
-
-    int listViewPosition;
-
-    ListView noteListView;
-
-    SimpleCursorAdapter noteItemAdapter;
-
-    DBController dbController;
 
     FloatingActionButton fab;
     Toolbar toolbar;
+    ListView noteListView;
+
+    NoteListAdapter nlAdapter = null;
+
+    private int listViewPosition;
+
+    NoteBook noteBook = null;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_list);
 
-
-
         findViewId();
-
         setSupportActionBar(toolbar);
 
-        setDBController();
-
+        initialize();
         setNoteListAdapter();
-
         setOnClickListener();
 
     }
 
-    private void setDBController(){
+    private void initialize() {
 
-        dbController = new DBController(this);
+        noteBook = NoteBook.getInstance(this);
 
     }
 
@@ -82,8 +73,6 @@ public class MainList extends AppCompatActivity {
 
     }
 
-
-
     private void setOnClickListener() {
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -94,22 +83,36 @@ public class MainList extends AppCompatActivity {
 
                 Intent intent = new Intent();
 
-                intent.setClass(MainList.this, editNote.class);
+                intent.setClass(MainList.this, EditNote.class);
 
                 startActivity(intent);
 
             }
         });
 
+
+        // On Click
+        noteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Log.d(KG_LOG_TITLE,"Data Base ID :" + nlAdapter.getItem(position).getDataBaseId());
+
+                Log.d(KG_LOG_TITLE,"Note Title :" + nlAdapter.getItem(position).getTitle());
+
+            }
+        });
+
+
+        // On Long Click
         noteListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
                 PopupMenu popupmenu = new PopupMenu(MainList.this, view);
                 popupmenu.inflate(R.menu.main_list_popup_menu);
 
                 listViewPosition = position;
-
                 popupmenu.show();
 
                 Log.d("KG ------ :","Long Click");
@@ -135,15 +138,19 @@ public class MainList extends AppCompatActivity {
                             case R.id.popup_delete:
 
                                 Log.d(KG_LOG_TITLE,"Delete ID : "+ nlAdapter.getItem(listViewPosition).getDataBaseId());
-                                dbController.deleteNoteItem(NOTE_TABLE_NAME, nlAdapter.getItem(listViewPosition).getDataBaseId());
 
+                                // 取得 Note 物件 ID，再透過 NoteBook 物件執行刪除程序
+                                //dbController.deleteNoteItem(NOTE_TABLE_NAME, nlAdapter.getItem(listViewPosition).getDataBaseId());
+
+                                noteBook.deleteNoteItem(nlAdapter.getItem(listViewPosition).getDataBaseId());
 
                                 // 重新給予更新過後的ArrayList，使用 setNoteArray(ArrayList<Note>)
                                 // 之後再使用 notifyDataSetChanged() 刷新ListView介面
 
                                 // 取得 Note Array ____ 取得 Note Cursor
 
-                                nlAdapter.setNoteArray(dbController.getNoteArray());
+                                // 要如何通知 NoteBook 物件更新 ArrayList 內容？
+                                //nlAdapter.setNoteArray(dbController.getNoteArray());
 
                                 nlAdapter.notifyDataSetChanged();
 
@@ -186,6 +193,7 @@ public class MainList extends AppCompatActivity {
 
     // =========== test Tools ============
 
+    /*
     private void setHandler() {
 
         try{
@@ -209,6 +217,7 @@ public class MainList extends AppCompatActivity {
     }
 
 
+
     private void setSimpleCursorAdapter() {
 
         noteItemAdapter =
@@ -224,4 +233,5 @@ public class MainList extends AppCompatActivity {
 
     }
 
+    */
 }

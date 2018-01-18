@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".editNote"
+            android:name=".EditNote"
             android:label="@string/null_string"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"

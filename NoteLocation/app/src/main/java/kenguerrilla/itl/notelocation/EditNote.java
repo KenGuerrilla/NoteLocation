@@ -18,13 +18,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
-public class editNote extends AppCompatActivity {
+public class EditNote extends AppCompatActivity {
 
     private MyDBHelper dbHelper;
 
-    String title, note, place, date, longitude="0", latitude="0";
-
-    String noteCreatTime, noteCreatDate;
 
     int alarmSetUp = 0;
     int gpsSetUp = 0;
@@ -36,13 +33,15 @@ public class editNote extends AppCompatActivity {
     EditText etEditTitle, etEditPlace, etEditNote;
     CheckBox cbGPS;
 
+    private NoteBook noteBook;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_note);
 
-        dbHelper = MyDBHelper.getInstance(this);
+        noteBook = NoteBook.getInstance(this);
 
         setupToolBar();
 
@@ -110,11 +109,11 @@ public class editNote extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_done) {
 
-            Toast.makeText(editNote.this,"Done",Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditNote.this,"Done",Toast.LENGTH_SHORT).show();
 
-            packUpNoteToSQLite();
+            packUpNoteToNoteBook();
 
-            backToMainListWithNothing();
+            changeActivity();
 
             return true;
         }
@@ -135,7 +134,7 @@ public class editNote extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                backToMainListWithNothing();
+                changeActivity();
 
             }
         });
@@ -143,87 +142,25 @@ public class editNote extends AppCompatActivity {
 
     }
 
-    private void backToMainListWithNothing(){
+    // Activity 切換的方式還要再調整
+    private void changeActivity(){
 
         Intent intent = new Intent();
 
-        intent.setClass(editNote.this ,MainList.class );
+        intent.setClass(EditNote.this ,MainList.class );
 
         startActivity(intent);
 
     }
 
-            /*
-        ======== TABLE ========
-        id          -- INTEGER
-        title       -- VARCHAR
-        note        -- VARCHAR
-        place       -- VARCHAR
-        date        -- VARCHAR
-        alarm       -- VARCHAR
-        longitude   -- VARCHAR
-        latitude    -- VARCHAR
-        alarmCheck  -- INTEGER
-        gpsCheck    -- INTEGER
-        =======================
-         */
 
-    private void packUpNoteToSQLite() {
+    private void packUpNoteToNoteBook() {
 
-        ContentValues cValue = new ContentValues();
-
-        title = etEditTitle.getText().toString();
-        note = etEditNote.getText().toString();
-        place = etEditPlace.getText().toString();
-
-        date = dateGetter();
-
-        cValue.put("title",title);
-        cValue.put("place",place);
-        cValue.put("date",date);
-        cValue.put("note",note);
-        cValue.put("gpsCheck",gpsSetUp);
-
-        long id = dbHelper.getWritableDatabase().insert("noteItem",null,cValue);
-
-        Log.d("Add Value, id: ",id+" ");
-
-        if (id > 0){
-            Toast.makeText(this, "新增完成", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(this, "新增失敗", Toast.LENGTH_SHORT).show();
-        }
+        noteBook.addNoteItem(   etEditTitle.getText().toString(),
+                                etEditPlace.getText().toString(),
+                                etEditNote.getText().toString(),
+                                gpsSetUp);
 
     }
-
-
-    private String timeGetter(){
-
-        Calendar c = Calendar.getInstance();
-
-        SimpleDateFormat sdft = new SimpleDateFormat("HH-mm");
-
-        noteCreatTime = sdft.format(c.getTime());
-
-        Log.d("Get time", noteCreatTime);
-
-        return noteCreatTime;
-
-    }
-
-
-    private String dateGetter(){
-
-        Calendar c = Calendar.getInstance();
-
-        SimpleDateFormat sdfd = new SimpleDateFormat("yyyy-MM-dd");
-
-        noteCreatDate = sdfd.format(c.getTime());
-
-        Log.d("KG Log ------- Get Date",noteCreatDate);
-
-        return noteCreatDate;
-    }
-
 
 }
