@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/list_margin_main_title"
-            android:text="@string/test_string"
+            android:text="@string/test_string_title"
             android:textSize="@dimen/list_main_title" />
 
         <LinearLayout
@@ -60,7 +60,7 @@
                 android:textSize="@dimen/list_subtitle" />
 
             <TextView
-                android:id="@+id/note_list_sub_title_location"
+                android:id="@+id/note_list_sub_title_gps"
                 android:layout_width="@dimen/list_view_size_zero"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

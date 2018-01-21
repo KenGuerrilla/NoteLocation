@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+            >
+
+    <item
+        android:top="-2sp"
+        android:right="-2sp"
+        android:left="-2sp"
+        android:bottom="2sp">
+
+        <shape android:shape="rectangle" >
+
+            <stroke android:width="1sp"
+                    android:color="@android:color/darker_gray"/>
+
+            <padding
+                    android:bottom="@dimen/edit_note_padding"
+                    android:left="@dimen/edit_note_padding"
+                    android:right="@dimen/edit_note_padding"
+                    android:top="@dimen/edit_note_padding"
+                />
+
+        </shape>
+
+
+
+
+    </item>
+
+
+
+
+
+</layer-list>

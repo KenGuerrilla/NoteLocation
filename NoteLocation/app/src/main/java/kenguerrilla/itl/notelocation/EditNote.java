@@ -10,7 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,18 +22,16 @@ import java.util.Calendar;
 
 public class EditNote extends AppCompatActivity {
 
-    private MyDBHelper dbHelper;
 
-
-    int alarmSetUp = 0;
-    int gpsSetUp = 0;
+    //boolean alarmSetUp = true;
+    boolean gpsSetUp = false;
 
     Toolbar editPageToolbar;
     TextView editPageToolbarCancelView;
 
     TextView tvSetGPS;
     EditText etEditTitle, etEditPlace, etEditNote;
-    CheckBox cbGPS;
+    Switch shGPS;
 
     private NoteBook noteBook;
 
@@ -58,7 +58,9 @@ public class EditNote extends AppCompatActivity {
         etEditTitle = findViewById(R.id.et_edit_title);
         etEditPlace = findViewById(R.id.et_edit_place);
         etEditNote = findViewById(R.id.et_edit_note);
-        cbGPS = findViewById(R.id.cb_GPS);
+        shGPS = findViewById(R.id.sh_gps);
+
+
 
     }
 
@@ -73,21 +75,18 @@ public class EditNote extends AppCompatActivity {
             }
         });
 
-        cbGPS.setOnClickListener(new View.OnClickListener() {
+
+
+        shGPS.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
 
-                if(cbGPS.isChecked()){
 
-                    gpsSetUp = 1;
+                }else{
 
-                }
-                else{
-
-                    gpsSetUp = 0;
 
                 }
-
             }
         });
 

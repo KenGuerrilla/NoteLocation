@@ -17,11 +17,14 @@
     <string name="str_text_location_null">Setting GPS not yet</string>
 
 
-    <string name="test_string">TestString!!!!!!!!!</string>
-    <string name="test_string_date">2017/12/22</string>
+    <string name="test_string_title">Android Studio Title Test </string>
+    <string name="test_string_date">2017-12-22</string>
     <string name="test_string_place">Taiwan Tainan</string>
     <string name="test_string_ac">_V_</string>
     <string name="test_string_loaction">_X_</string>
+    <string name="test_string_note">test!! test!! test!! test!! test!! test!!</string>
+    <string name="test_string_gps_status">GPS System offline </string>
+
     <string name="null_string" translatable="false"></string>
 
 
@@ -36,6 +39,9 @@
     <string name="main_list_popup_off">TurnOff</string>
     <string name="main_list_popup_delete">Delete</string>
 
+    <!-- Switch On Off String -->
 
+    <string name="switch_on">ON</string>
+    <string name="switch_off">Off</string>
 
 </resources>

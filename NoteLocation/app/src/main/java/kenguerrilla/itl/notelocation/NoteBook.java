@@ -55,10 +55,10 @@ public class NoteBook {
         updateNoteArrayList();
     }
 
-    public void addNoteItem(String title, String place, String note, int gpsSetUp){
+    public void addNoteItem(String title, String place, String note, boolean gpsSetUp){
 
         String date = dateGetter();
-        dbController.addNote(title, place, date, note, gpsSetUp);
+        dbController.addNote(title, place, date, note, booleanToInt(gpsSetUp));
         updateNoteArrayList();
 
     }
@@ -90,7 +90,7 @@ public class NoteBook {
 
     public ArrayList<Note> getNoteArray(Cursor cursor){
 
-        noteListArray.clear(); // 確保更新資料前 noteArray 為空，避免混入舊資料。
+        noteListArray.clear();
         cursor.moveToFirst();
 
         do{
@@ -103,16 +103,27 @@ public class NoteBook {
                                 cursor.getString(5),
                                 cursor.getString(6),
                                 cursor.getString(7),
-                                cursor.getInt(8),
-                                cursor.getInt(9)
+                                intToBoolean(cursor.getInt(8)),
+                                intToBoolean(cursor.getInt(9))
                     )
-
             );
+
 
         } while (cursor.moveToNext());
 
         Log.d(KG_LOG_TITLE,"Array have " + noteListArray.size() +" Item");
         return noteListArray;
+    }
+
+
+    // Integer to Boolean
+    private boolean intToBoolean(int i){
+        return i > 0;
+    }
+
+    // Boolean to Integer
+    private int booleanToInt(boolean b){
+        return b ? 1 : 0 ;
     }
 
 
@@ -126,14 +137,14 @@ public class NoteBook {
         private String alarm;
         private String longitude;
         private String latitude;
-        private int alarmCheck;
-        private int gpsCheck;
+        private boolean alarmCheck;
+        private boolean gpsCheck;
 
         public Note(    String dataBaseId, String title,
                         String note,String place,
                         String date, String alarm,
                         String longitude, String latitude,
-                        int alarmCheck, int gpsCheck
+                        boolean alarmCheck, boolean gpsCheck
         ){
 
             this.dataBaseId = dataBaseId;
@@ -147,6 +158,15 @@ public class NoteBook {
             this.alarmCheck = alarmCheck;
             this.gpsCheck = gpsCheck;
 
+        }
+
+        String getGpsStatusToString(){
+            if(gpsCheck){
+                return "V";
+            }
+            else{
+                return "X";
+            }
         }
 
 
@@ -210,19 +230,19 @@ public class NoteBook {
             this.latitude = latitude;
         }
 
-        int isAlarmCheck() {
+        boolean isAlarmCheck() {
             return alarmCheck;
         }
 
-        void setAlarmCheck(int alarmCheck) {
+        void setAlarmCheck(boolean alarmCheck) {
             this.alarmCheck = alarmCheck;
         }
 
-        int isGpsCheck() {
+        boolean isGpsCheck() {
             return gpsCheck;
         }
 
-        void setGpsCheck(int gpsCheck) {
+        void setGpsCheck(boolean gpsCheck) {
             this.gpsCheck = gpsCheck;
         }
 

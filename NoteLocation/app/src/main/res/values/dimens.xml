@@ -17,11 +17,25 @@
 
     <dimen name="note_edit_title_margin_size">8sp</dimen>
 
-    <!-- Note edit text size -->
+    <!-- note info view margin -->
 
-    <dimen name="note_edit_location_text_size">20sp</dimen>
+    <dimen name="note_info_view_margin">2sp</dimen>
+
+    <!-- Note print text size -->
+
+    <dimen name="note_text_size">20sp</dimen>
 
 
     <!-- list subtitle weight  -->
     <dimen name="list_view_size_zero">0sp</dimen>
+
+
+    <!-- for edit note padding -->
+
+    <dimen name="edit_note_padding">8sp</dimen>
+
+    <!-- fix LinearLayout right space -->
+
+    <dimen name="fix_linear_layout_right_space">2sp</dimen>
+
 </resources>

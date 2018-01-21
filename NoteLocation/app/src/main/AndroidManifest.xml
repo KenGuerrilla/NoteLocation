@@ -8,15 +8,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar"
-        >
+        android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".MainList"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"
-            >
-
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,10 +23,9 @@
         <activity
             android:name=".EditNote"
             android:label="@string/null_string"
-            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"
-
-            ></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".NoteInfo"></activity>
     </application>
 
 </manifest>

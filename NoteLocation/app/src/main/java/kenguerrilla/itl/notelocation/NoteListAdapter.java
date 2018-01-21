@@ -30,16 +30,7 @@ public class NoteListAdapter extends BaseAdapter {
     NoteListAdapter(Context context){
         adapterLayoutInflater = LayoutInflater.from(context);
         noteBook = NoteBook.getInstance(context);
-        //noteArray = dbController.getNoteArray();
-    }
-
-/*
-    void setNoteArray(ArrayList<Note> noteArray) {
-        this.noteArray = noteArray;
-        Log.d(KG_LOG_TITLE,"Reset Note Array");
-    }
-*/
-
+            }
 
 
     @Override
@@ -70,7 +61,7 @@ public class NoteListAdapter extends BaseAdapter {
                     (TextView) myView.findViewById(R.id.note_list_main_title),
                     (TextView) myView.findViewById(R.id.note_list_sub_title_date),
                     (TextView) myView.findViewById(R.id.note_list_sub_title_place),
-                    (TextView) myView.findViewById(R.id.note_list_sub_title_location),
+                    (TextView) myView.findViewById(R.id.note_list_sub_title_gps),
                     (TextView) myView.findViewById(R.id.note_list_sub_title_ac)
             );
 
@@ -79,6 +70,8 @@ public class NoteListAdapter extends BaseAdapter {
             tag.listSubTitlePlace.setText(noteBook.getNoteBookItem(i).getPlace());
             tag.listSubTitleLocation.setText(GPS_DATA_NOT_YET);
             tag.listSubTitleAc.setText(AC_DATA_NOT_YET);
+
+            Log.d(KG_LOG_TITLE,noteBook.getNoteBookItem(i).getGpsStatusToString());
 
         return myView;
     }

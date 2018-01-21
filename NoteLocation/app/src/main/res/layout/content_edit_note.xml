@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/str_note_title_hint"
+            android:textSize="@dimen/note_text_size"
             android:inputType="text"
             android:text="" />
 
@@ -39,6 +40,7 @@
             android:id="@+id/et_edit_place"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/note_text_size"
             android:ems="10"
             android:inputType="text"
             android:hint="@string/str_note_place_hint"
@@ -49,31 +51,41 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/fix_linear_layout_right_space"
             android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/cb_GPS"
-                android:layout_width="@dimen/list_view_size_zero"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/null_string" />
 
             <TextView
                 android:id="@+id/tv_gps_set"
                 android:layout_width="@dimen/list_view_size_zero"
                 android:layout_height="wrap_content"
-                android:layout_weight="9"
-                android:gravity="center"
-                android:text="@string/str_text_location_null"
-                android:textSize="@dimen/note_edit_location_text_size" />
+                android:layout_weight="7"
+                android:paddingStart="8sp"
+                android:gravity="start"
+                android:text="@string/test_string_gps_status"
+                android:textSize="@dimen/note_text_size" />
+
+            <Switch
+                android:id="@+id/sh_gps"
+                android:layout_width="@dimen/list_view_size_zero"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1sp"
+                android:layout_weight="1"
+                android:textOn="@string/switch_on"
+                android:textOff="@string/switch_off"
+
+                />
 
         </LinearLayout>
 
         <EditText
             android:id="@+id/et_edit_note"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/view_stroke"
+            android:textSize="@dimen/note_text_size"
             android:ems="10"
+            android:gravity="top|start"
             android:hint="@string/str_note_keying_hint"
             android:inputType="textMultiLine" />
 

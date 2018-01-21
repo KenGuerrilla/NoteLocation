@@ -44,7 +44,6 @@ import java.util.ArrayList;
 
     }
 
-
     Cursor getNoteItemCursor() {
 
         cursor = dbHelper.getReadableDatabase().query("noteItem",
@@ -65,9 +64,7 @@ import java.util.ArrayList;
 
     public long addNote(String title, String place, String date, String note, int gpsSetUp){
 
-
         ContentValues cValue = new ContentValues();
-
 
         cValue.put("title",title);
         cValue.put("place",place);
@@ -77,16 +74,15 @@ import java.util.ArrayList;
 
         long id = dbHelper.getWritableDatabase().insert("noteItem",null,cValue);
 
-        Log.d("Add Value, id: ",id+" ");
+        Log.d(KG_LOG_TITLE,"Id : " + id+" ");
+        Log.d(KG_LOG_TITLE,"gpsSetUp : " + gpsSetUp);
 
         if (id > 0){
             Log.d(KG_LOG_TITLE,"ID 為 " + id +"新增成功");
         }else{
             Log.d(KG_LOG_TITLE,"新增失敗");
         }
-
         return id;
-
     }
 
 
