@@ -54,15 +54,15 @@
             android:layout_marginEnd="@dimen/fix_linear_layout_right_space"
             android:orientation="horizontal">
 
-
             <TextView
                 android:id="@+id/tv_gps_set"
                 android:layout_width="@dimen/list_view_size_zero"
                 android:layout_height="wrap_content"
                 android:layout_weight="7"
                 android:paddingStart="8sp"
+                android:paddingEnd="@dimen/view_size_zero"
                 android:gravity="start"
-                android:text="@string/test_string_gps_status"
+                android:text="@string/test_string_gps_status_off"
                 android:textSize="@dimen/note_text_size" />
 
             <Switch
@@ -70,6 +70,7 @@
                 android:layout_width="@dimen/list_view_size_zero"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1sp"
+                android:layout_marginEnd="@dimen/view_size_zero"
                 android:layout_weight="1"
                 android:textOn="@string/switch_on"
                 android:textOff="@string/switch_off"

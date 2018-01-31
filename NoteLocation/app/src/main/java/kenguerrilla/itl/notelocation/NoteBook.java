@@ -19,7 +19,7 @@ public class NoteBook {
 
     private static NoteBook instance = null;
 
-    private DBController dbController;
+    private MyDBHelper dbHelper;
     private ArrayList<Note> noteListArray;
 
     String noteCreateTime, noteCreateDate;
@@ -27,7 +27,7 @@ public class NoteBook {
     private NoteBook(Context context){
 
         noteListArray = new ArrayList<>();
-        dbController = new DBController(context);
+        dbHelper = MyDBHelper.getInstance(context);
         updateNoteArrayList();
 
     }
@@ -46,25 +46,58 @@ public class NoteBook {
         return noteListArray.size();
     }
 
-    public Note getNoteBookItem(int i){
+    public Note getNoteByArrayIndex(int i){
         return noteListArray.get(i);
     }
 
-    public void deleteNoteItem(String id){
-        dbController.deleteNoteById(NOTE_TABLE_NAME,id);
-        updateNoteArrayList();
+
+
+    // 設計一個可以走訪陣列比對指定ID的方法
+    public Note getNoteById(String id){
+
+        for(Note notePointer : noteListArray){
+
+            if(notePointer.getDataBaseId().equals(id)){
+
+                //Log.d(KG_LOG_TITLE,"DATABASE ID: " + notePointer.getDataBaseId());
+
+                return notePointer;
+            }
+        }
+        return null;
     }
 
-    public void addNoteItem(String title, String place, String note, boolean gpsSetUp){
+
+    public void deleteNoteItemById(String id){
+
+        Log.d(KG_LOG_TITLE,"NoteBook Delete id: " + id );
+        dbHelper.deleteNoteById(NOTE_TABLE_NAME,id);
+        updateNoteArrayList();
+
+    }
+
+    public void updateNoteItemById(String id, String title, String place, String note, boolean gpsStatusBoolean){
 
         String date = dateGetter();
-        dbController.addNote(title, place, date, note, booleanToInt(gpsSetUp));
+        int gpsStatusInt = booleanToInt(gpsStatusBoolean);
+        Log.d(KG_LOG_TITLE,"NoteBook --- UpdateNoteItemByID, ID: " + id + " -- Title: " + title);
+        long longId = dbHelper.updateNoteById(NOTE_TABLE_NAME,id,title,place,date,note,gpsStatusInt);
+        Log.d(KG_LOG_TITLE,"Update Status ID :" + longId);
+        updateNoteArrayList();
+
+    }
+
+    public void addNoteItem(String title, String place, String note, boolean gpsStatusBoolean){
+
+        String date = dateGetter();
+        long longId = dbHelper.addNote(title, place, date, note, booleanToInt(gpsStatusBoolean));
+        Log.d(KG_LOG_TITLE,"Add Status ID :" + longId);
         updateNoteArrayList();
 
     }
 
     private void updateNoteArrayList() {
-        noteListArray = getNoteArray(dbController.getNoteItemCursor());
+        noteListArray = getNoteArray(dbHelper.getNoteItemCursor());
     }
 
     private String timeGetter(){

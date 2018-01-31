@@ -29,18 +29,18 @@
 
 
                 <TextView
-                    android:id="@+id/cancel_text_view"
+                    android:id="@+id/tv_edit_toolbar_cancel"
                     style="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
                     android:layout_width="wrap_content"
-
                     android:textColor="@android:color/white"
-
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-
                     android:background="?attr/selectableItemBackground"
                     android:gravity="center_vertical"
-                    android:text="Cancel    " />
+                    android:paddingStart="@dimen/toolbar_padding_start"
+                    android:paddingEnd="@dimen/toolbar_padding_end"
+                    android:text="@string/toolbar_cancel"
+                    android:textSize="@dimen/toolbar_cancel_view_size"
+                    />
 
             </LinearLayout>
 

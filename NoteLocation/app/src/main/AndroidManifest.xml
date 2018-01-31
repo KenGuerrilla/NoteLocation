@@ -25,7 +25,12 @@
             android:label="@string/null_string"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".NoteInfo"></activity>
+        <activity
+            android:name=".NoteInfo"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">NoteLocation</string>
     <string name="action_settings">Settings</string>
+    <string name="action_about">About</string>
+
+
+    <string name="button_OK">OK</string>
+
+
+    <!-- About Me -->
+    <string name="about_me_title">About This Application</string>
+    <string name="about_me_msg">Coding by KenGuerrilla</string>
 
     <string name="str_note_title">Title</string>
     <string name="str_note_time">Time</string>
@@ -23,15 +32,17 @@
     <string name="test_string_ac">_V_</string>
     <string name="test_string_loaction">_X_</string>
     <string name="test_string_note">test!! test!! test!! test!! test!! test!!</string>
-    <string name="test_string_gps_status">GPS System offline </string>
+    <string name="test_string_gps_status_off">GPS System offline </string>
+    <string name="test_string_gps_status_on">GPS System Online</string>
 
     <string name="null_string" translatable="false"></string>
 
+    <string name="toolbar_cancel">Cancel       </string>
 
     <!-- menu -->
 
     <string name="menu_done">Done</string>
-
+    <string name="menu_edit">Edit</string>
 
     <!-- MainList popup menu -->
 
@@ -42,6 +53,13 @@
     <!-- Switch On Off String -->
 
     <string name="switch_on">ON</string>
-    <string name="switch_off">Off</string>
+    <string name="switch_off">OFF</string>
+
+    <!-- just fun -->
+
+    <string name="fun_dialog_title">Ready Not Yet</string>
+    <string name="fun_dialog_msg">Kid, Are you READY???</string>
+    <string name="fun_dialog_ans">Yes!! Captain!!</string>
+
 
 </resources>

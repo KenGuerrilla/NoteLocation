@@ -5,12 +5,12 @@
     <dimen name="list_main_title">24sp</dimen>
     <dimen name="list_subtitle">16sp</dimen>
 
-
     <dimen name="edit_text">18sp</dimen>
     <dimen name="title_size">18sp</dimen>
     <dimen name="title_size2">16sp</dimen>
 
     <!-- list title margin -->
+
     <dimen name="list_margin_main_title">6sp</dimen>
     <dimen name="list_margin_subtitle_size">6sp</dimen>
     <dimen name="list_margin_subtitle_left_size">16sp</dimen>
@@ -25,9 +25,15 @@
 
     <dimen name="note_text_size">20sp</dimen>
 
-
     <!-- list subtitle weight  -->
     <dimen name="list_view_size_zero">0sp</dimen>
+
+
+    <!-- toolbar -->
+    <dimen name="toolbar_padding_start">0sp</dimen>
+    <dimen name="toolbar_padding_end">16sp</dimen>
+    <dimen name="toolbar_text_view_zero">0dp</dimen>
+    <dimen name="toolbar_cancel_view_size">14sp</dimen>
 
 
     <!-- for edit note padding -->
@@ -37,5 +43,19 @@
     <!-- fix LinearLayout right space -->
 
     <dimen name="fix_linear_layout_right_space">2sp</dimen>
+
+    <!-- size zero -->
+
+    <dimen name="view_size_zero">0sp</dimen>
+
+    <!-- list icon size -->
+
+    <dimen name="list_image_view_high_size">22sp</dimen>
+
+    <!-- list item padding -->
+
+    <dimen name="list_item_padding_top_right">0sp</dimen>
+    <dimen name="list_item_padding_bottom">10sp</dimen>
+    <dimen name="list_item_padding_left">2sp</dimen>
 
 </resources>

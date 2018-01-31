@@ -28,5 +28,16 @@
     <string name="main_list_popup_edit">編輯</string>
     <string name="main_list_popup_off">關閉</string>
     <string name="main_list_popup_delete">刪除</string>
+    <string name="action_about">關於</string>
+    <string name="button_OK">確認</string>
+    <string name="about_me_title">關於這個應用程式</string>
+    <string name="about_me_msg">程式碼由 KenGuerrilla 撰寫</string>
+    <string name="test_string_gps_status_off">GPS 系統 Offline</string>
+    <string name="test_string_gps_status_on">GPS 系統 Online</string>
+    <string name="toolbar_cancel">取消</string>
+    <string name="menu_edit">編輯</string>
+    <string name="fun_dialog_title">功能尚未備妥</string>
+    <string name="fun_dialog_msg">準備好了嗎？孩子們？！</string>
+    <string name="fun_dialog_ans">是的！船長！！</string>
 
 </resources>

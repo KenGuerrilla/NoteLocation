@@ -8,10 +8,8 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="2dp"
+        android:background="@drawable/list_item_style"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +37,7 @@
                 android:layout_width="@dimen/list_view_size_zero"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/list_margin_subtitle_left_size"
-                android:layout_weight="3"
+                android:layout_weight="5"
                 android:text="@string/test_string_date"
                 android:textSize="@dimen/list_subtitle" />
 
@@ -47,25 +45,17 @@
                 android:id="@+id/note_list_sub_title_place"
                 android:layout_width="@dimen/list_view_size_zero"
                 android:layout_height="wrap_content"
-                android:layout_weight="6"
+                android:layout_weight="8"
                 android:text="@string/test_string_place"
                 android:textSize="@dimen/list_subtitle" />
 
-            <TextView
-                android:id="@+id/note_list_sub_title_ac"
-                android:layout_width="@dimen/list_view_size_zero"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/test_string_ac"
-                android:textSize="@dimen/list_subtitle" />
+            <ImageView
+                android:id="@+id/iv_ic_gps"
+                android:layout_width="@dimen/view_size_zero"
+                android:layout_height="@dimen/list_image_view_high_size"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/ic_location_off" />
 
-            <TextView
-                android:id="@+id/note_list_sub_title_gps"
-                android:layout_width="@dimen/list_view_size_zero"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/test_string_loaction"
-                android:textSize="@dimen/list_subtitle" />
 
         </LinearLayout>
 

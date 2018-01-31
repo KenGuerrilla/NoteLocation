@@ -1,6 +1,9 @@
 package kenguerrilla.itl.notelocation;
 
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -25,15 +28,12 @@ public class MainList extends AppCompatActivity {
 
     public static final String KG_LOG_TITLE = "KG ------ ";
 
+    public static final String NEW_NOTE = "-1";
+
     FloatingActionButton fab;
     Toolbar toolbar;
-    ListView noteListView;
 
     RecyclerView noteRecyclerView;
-
-    NoteListAdapter nlAdapter = null;
-
-    private int listViewPosition;
 
     NoteBook noteBook = null;
 
@@ -48,11 +48,8 @@ public class MainList extends AppCompatActivity {
         setSupportActionBar(toolbar);
         initialize();
 
-
         setNoteRecyclerViewAdapter();
         setOnClickListener();
-        //setNoteListAdapter();
-
 
     }
 
@@ -73,21 +70,11 @@ public class MainList extends AppCompatActivity {
     }
 
 
-    private void setNoteListAdapter() {
-
-        nlAdapter = new NoteListAdapter(this);
-
-        noteListView.setAdapter(nlAdapter);
-
-    }
-
 
     private void findViewId() {
 
         toolbar = findViewById(R.id.toolbar);
         fab = findViewById(R.id.fab);
-        //noteListView = findViewById(R.id.list_view_note);
-
         noteRecyclerView = findViewById(R.id.main_recycler_view);
 
     }
@@ -98,98 +85,18 @@ public class MainList extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
 
                 Intent intent = new Intent();
-
+                Bundle bundle = new Bundle();
                 intent.setClass(MainList.this, EditNote.class);
-
+                bundle.putString("NOTE_ID",NEW_NOTE);
+                intent.putExtras(bundle);
                 startActivity(intent);
 
             }
         });
 
-/*
-        // On Click
-        noteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Log.d(KG_LOG_TITLE,"Data Base ID :" + nlAdapter.getItem(position).getDataBaseId());
-
-                Log.d(KG_LOG_TITLE,"Note Title :" + nlAdapter.getItem(position).getTitle());
-
-            }
-        });
-
-
-        // On Long Click
-        noteListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-
-                PopupMenu popupmenu = new PopupMenu(MainList.this, view);
-                popupmenu.inflate(R.menu.main_list_popup_menu);
-
-                listViewPosition = position;
-                popupmenu.show();
-
-                Log.d("KG ------ :","Long Click");
-
-                popupmenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-
-                        switch (item.getItemId()){
-
-                            case R.id.popup_edit:
-
-                                Toast.makeText(MainList.this,"Press Edit",Toast.LENGTH_LONG).show();
-
-                                break;
-
-                            case R.id.popup_turn_off:
-
-                                Toast.makeText(MainList.this,"Press Turn Off",Toast.LENGTH_LONG).show();
-
-                                break;
-
-                            case R.id.popup_delete:
-
-                                Log.d(KG_LOG_TITLE,"Delete ID : "+ nlAdapter.getItem(listViewPosition).getDataBaseId());
-
-                                // 取得 Note 物件 ID，再透過 NoteBook 物件執行刪除程序
-                                //dbController.deleteNoteItem(NOTE_TABLE_NAME, nlAdapter.getItem(listViewPosition).getDataBaseId());
-
-                                noteBook.deleteNoteItem(nlAdapter.getItem(listViewPosition).getDataBaseId());
-
-                                // 重新給予更新過後的ArrayList，使用 setNoteArray(ArrayList<Note>)
-                                // 之後再使用 notifyDataSetChanged() 刷新ListView介面
-
-                                // 取得 Note Array ____ 取得 Note Cursor
-
-                                // 要如何通知 NoteBook 物件更新 ArrayList 內容？
-                                //nlAdapter.setNoteArray(dbController.getNoteArray());
-
-                                nlAdapter.notifyDataSetChanged();
-
-                                break;
-
-                        }
-                        return true;
-                    }
-                });
-                return true;
-            }
-        });
-
-*/
-
     }
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -207,54 +114,55 @@ public class MainList extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            justFunDialog();
+            return true;
+        }
+
+        if(id == R.id.action_about){
+
+            aboutMeDialog();
+
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    private void aboutMeDialog(){
 
-    // =========== test Tools ============
+        final AlertDialog.Builder aboutDialog = new AlertDialog.Builder(this);
+        aboutDialog.setTitle(R.string.about_me_title);
+        aboutDialog.setMessage(R.string.about_me_msg);
+        aboutDialog.setCancelable(false);
 
-    /*
-    private void setHandler() {
+        aboutDialog.setPositiveButton(R.string.button_OK, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-        try{
+            }
+        });
 
-            final Handler mainListHandler = new Handler();
-            mainListHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    //nlAdapter.notifyDataSetChanged();
-                    Log.d(KG_LOG_TITLE,"UI Notify Data Set Changed");
-                }
-            },60*1000);
-
-        }catch (Exception e){
-
-            Log.e(KG_LOG_TITLE,"UI Notify Data Set Changed Was Fail");
-
-        }
+        aboutDialog.show();
 
     }
 
+    private void justFunDialog(){
 
+        final AlertDialog.Builder aboutDialog = new AlertDialog.Builder(this);
+        aboutDialog.setTitle(R.string.fun_dialog_title);
+        aboutDialog.setMessage(R.string.fun_dialog_msg);
+        aboutDialog.setCancelable(false);
 
-    private void setSimpleCursorAdapter() {
+        aboutDialog.setPositiveButton(R.string.fun_dialog_ans, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-        noteItemAdapter =
-                new SimpleCursorAdapter(this,
-                        R.layout.list_view_item_layout,
-                        dbController.getNoteItemCursor(),
-                        new String[] {"title", "place", "date"},
-                        new int[] {R.id.note_list_main_title, R.id.note_list_sub_title_place, R.id.note_list_sub_title_date},
-                        0
-                );
+            }
+        });
 
-        noteListView.setAdapter(noteItemAdapter);
+        aboutDialog.show();
 
     }
 
-    */
 }
