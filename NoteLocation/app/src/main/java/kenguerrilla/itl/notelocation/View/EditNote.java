@@ -1,4 +1,4 @@
-package kenguerrilla.itl.notelocation;
+package kenguerrilla.itl.notelocation.View;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +12,9 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import kenguerrilla.itl.notelocation.Model.NoteBook;
+import kenguerrilla.itl.notelocation.R;
 
 public class EditNote extends AppCompatActivity {
 
@@ -68,13 +71,13 @@ public class EditNote extends AppCompatActivity {
         catch (NullPointerException ex){
 
             Log.d(KG_LOG_TITLE,"!!! Exception !!! EditNote.java -- printNote Throw NullPointer: " + ex);
-            Toast.makeText(this,"Data Error with Exception",Toast.LENGTH_SHORT);
+            Toast.makeText(this,"Data Error with Exception",Toast.LENGTH_SHORT).show();
 
         }
         catch (Exception ex){
 
             Log.d(KG_LOG_TITLE,"!!! Exception !!! EditNote.java -- printNote Throw Exception: " + ex);
-            Toast.makeText(this,"Error with Exception",Toast.LENGTH_SHORT);
+            Toast.makeText(this,"Error with Exception",Toast.LENGTH_SHORT).show();
 
         }
 
@@ -207,13 +210,13 @@ public class EditNote extends AppCompatActivity {
         catch (NullPointerException ex){
 
             Log.d(KG_LOG_TITLE,"!!! Exception !!! EditNote.java -- printNote Throw NullPointer: " + ex);
-            Toast.makeText(this,"Data Error with Exception",Toast.LENGTH_SHORT);
+            Toast.makeText(this,"Data Error with Exception",Toast.LENGTH_SHORT).show();
 
         }
         catch (Exception ex){
 
             Log.d(KG_LOG_TITLE,"!!! Exception !!! EditNote.java -- printNote Throw Exception: " + ex);
-            Toast.makeText(this,"Error with Exception",Toast.LENGTH_SHORT);
+            Toast.makeText(this,"Error with Exception",Toast.LENGTH_SHORT).show();
 
         }
 

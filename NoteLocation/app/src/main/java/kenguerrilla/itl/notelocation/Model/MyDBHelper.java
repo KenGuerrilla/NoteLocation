@@ -1,4 +1,4 @@
-package kenguerrilla.itl.notelocation;
+package kenguerrilla.itl.notelocation.Model;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -30,7 +30,6 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
             dbInstance = new MyDBHelper(context,DATABASE,null,DATABASE_VER);
 
-
         }
 
         return dbInstance;
@@ -38,8 +37,6 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
     private MyDBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
-
-
 
     }
 
@@ -59,7 +56,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
          9 - alarmCheck  -- INTEGER
         10 - gpsCheck    -- INTEGER
         =======================
-         */
+        */
 
 /*
         db.execSQL("CREATE TABLE \"main\".\"noteItem\"" +
@@ -125,7 +122,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         cValue.put("note",note);
         cValue.put("gpsCheck",gpsSetUp);
 
-        long id = getWritableDatabase().insert("noteItem",null,cValue);
+        long id = getWritableDatabase().insert("noteItem",null, cValue);
 
         Log.d(KG_LOG_TITLE,"Id : " + id+" ");
         Log.d(KG_LOG_TITLE,"gpsSetUp : " + gpsSetUp);

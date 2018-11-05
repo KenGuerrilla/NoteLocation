@@ -1,4 +1,4 @@
-package kenguerrilla.itl.notelocation;
+package kenguerrilla.itl.notelocation.View;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import kenguerrilla.itl.notelocation.Model.NoteBook;
+import kenguerrilla.itl.notelocation.R;
 
 public class NoteInfo extends AppCompatActivity {
 
@@ -75,6 +78,16 @@ public class NoteInfo extends AppCompatActivity {
         infoToolbar.setTitle(null);
 
         infoToolbarCancelView = findViewById(R.id.tv_info_toolbar_cancel);
+
+        infoGpsStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(NoteInfo.this,MapsActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 

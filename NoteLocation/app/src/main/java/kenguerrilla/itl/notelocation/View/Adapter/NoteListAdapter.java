@@ -1,7 +1,6 @@
-package kenguerrilla.itl.notelocation;
+package kenguerrilla.itl.notelocation.View.Adapter;
 
 import android.content.Context;
-import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import kenguerrilla.itl.notelocation.Model.NoteBook;
+import kenguerrilla.itl.notelocation.R;
 
 
 /**

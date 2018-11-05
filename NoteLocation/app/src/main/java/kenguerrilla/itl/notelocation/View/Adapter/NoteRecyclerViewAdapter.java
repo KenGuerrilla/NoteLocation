@@ -1,4 +1,4 @@
-package kenguerrilla.itl.notelocation;
+package kenguerrilla.itl.notelocation.View.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+
+import kenguerrilla.itl.notelocation.Model.NoteBook;
+import kenguerrilla.itl.notelocation.R;
+import kenguerrilla.itl.notelocation.View.EditNote;
+import kenguerrilla.itl.notelocation.View.NoteInfo;
 
 /**
  * Created by KenGuerrilla on 2018/1/21.

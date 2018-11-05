@@ -1,7 +1,8 @@
-package kenguerrilla.itl.notelocation;
+package kenguerrilla.itl.notelocation.Model;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.os.Parcel;
 import android.util.Log;
 
 import java.text.SimpleDateFormat;
@@ -81,7 +82,7 @@ public class NoteBook {
         String date = dateGetter();
         int gpsStatusInt = booleanToInt(gpsStatusBoolean);
         Log.d(KG_LOG_TITLE,"NoteBook --- UpdateNoteItemByID, ID: " + id + " -- Title: " + title);
-        long longId = dbHelper.updateNoteById(NOTE_TABLE_NAME,id,title,place,date,note,gpsStatusInt);
+        long longId = dbHelper.updateNoteById(NOTE_TABLE_NAME, id, title, place, date, note, gpsStatusInt);
         Log.d(KG_LOG_TITLE,"Update Status ID :" + longId);
         updateNoteArrayList();
 
@@ -126,9 +127,11 @@ public class NoteBook {
         noteListArray.clear();
         cursor.moveToFirst();
 
-        do{
-            noteListArray.add(
-                    new Note(   cursor.getString(0),
+        if(cursor.getCount() != 0){
+            do{
+                noteListArray.add(
+                        new Note(
+                                cursor.getString(0),
                                 cursor.getString(1),
                                 cursor.getString(2),
                                 cursor.getString(3),
@@ -138,11 +141,12 @@ public class NoteBook {
                                 cursor.getString(7),
                                 intToBoolean(cursor.getInt(8)),
                                 intToBoolean(cursor.getInt(9))
-                    )
-            );
+                        )
+                );
 
 
-        } while (cursor.moveToNext());
+            } while (cursor.moveToNext());
+        }
 
         Log.d(KG_LOG_TITLE,"Array have " + noteListArray.size() +" Item");
         return noteListArray;
@@ -161,6 +165,8 @@ public class NoteBook {
 
 
     public class Note {
+
+
 
         private String dataBaseId;
         private String title;
@@ -193,7 +199,7 @@ public class NoteBook {
 
         }
 
-        String getGpsStatusToString(){
+        public String getGpsStatusToString(){
             if(gpsCheck){
                 return "V";
             }
@@ -203,11 +209,11 @@ public class NoteBook {
         }
 
 
-        String getDataBaseId() {
+        public String getDataBaseId() {
             return dataBaseId;
         }
 
-        String getTitle() {
+        public String getTitle() {
             return title;
         }
 
@@ -215,7 +221,7 @@ public class NoteBook {
             this.title = title;
         }
 
-        String getNote() {
+        public String getNote() {
             return note;
         }
 
@@ -223,7 +229,7 @@ public class NoteBook {
             this.note = note;
         }
 
-        String getDate() {
+        public String getDate() {
             return date;
         }
 
@@ -231,7 +237,7 @@ public class NoteBook {
             this.date = date;
         }
 
-        String getPlace() {
+        public String getPlace() {
             return place;
         }
 
@@ -271,7 +277,7 @@ public class NoteBook {
             this.alarmCheck = alarmCheck;
         }
 
-        boolean isGpsCheck() {
+        public boolean isGpsCheck() {
             return gpsCheck;
         }
 
